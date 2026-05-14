@@ -5,6 +5,8 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Rooms from './pages/Rooms';
 import Contact from './pages/Contact';
+import Admin from './pages/Admin';
+import AdminLogin from './pages/AdminLogin';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -25,6 +27,8 @@ const App: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/rooms" element={<Rooms />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </main>
         <Footer />

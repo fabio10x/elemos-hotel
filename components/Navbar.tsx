@@ -27,18 +27,21 @@ const Navbar: React.FC = () => {
     setIsOpen(false);
   }, [location]);
 
+  const isHomePage = location.pathname === '/';
+  const showSolidNav = isScrolled || isOpen || !isHomePage;
+
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled || isOpen ? 'bg-white/95 backdrop-blur-sm shadow-md text-gray-900' : 'bg-transparent text-white'
+        showSolidNav ? 'bg-white/95 backdrop-blur-sm shadow-md text-gray-900' : 'bg-transparent text-white'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex-shrink-0 flex items-center gap-2">
             <Link to="/" className="flex items-center gap-2 group">
-              <Hotel className={`h-8 w-8 ${isScrolled || isOpen ? 'text-amber-600' : 'text-amber-400'}`} />
-              <span className="font-serif text-2xl font-bold tracking-wider uppercase">Elmos</span>
+              <Hotel className={`h-8 w-8 ${showSolidNav ? 'text-amber-600' : 'text-amber-400'}`} />
+              <span className="font-serif text-2xl font-bold tracking-wider uppercase">Aura</span>
             </Link>
           </div>
 
@@ -49,16 +52,16 @@ const Navbar: React.FC = () => {
                 key={item.path}
                 to={item.path}
                 className={`text-sm font-medium hover:text-amber-500 transition-colors uppercase tracking-wide ${
-                  location.pathname === item.path && (isScrolled || isOpen ? 'text-amber-600' : 'text-amber-400')
+                  location.pathname === item.path && (showSolidNav ? 'text-amber-600' : 'text-amber-400')
                 }`}
               >
                 {item.label}
               </Link>
             ))}
             <a
-              href="tel:0909477777"
+              href="tel:0900030836"
               className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all ${
-                 isScrolled || isOpen 
+                 showSolidNav 
                   ? 'border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white' 
                   : 'border-white text-white hover:bg-white hover:text-gray-900'
               }`}
@@ -94,10 +97,10 @@ const Navbar: React.FC = () => {
               </Link>
             ))}
              <a
-              href="tel:0909477777"
+              href="tel:0900030836"
               className="block mt-4 w-full text-center bg-amber-600 text-white py-3 rounded-lg font-bold"
             >
-              Call 090 947 7777
+              Call 090 003 0836
             </a>
           </div>
         </div>
